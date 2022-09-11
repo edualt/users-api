@@ -8,6 +8,7 @@ import com.api.users.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -28,12 +29,12 @@ public class UserController {
     }
 
     @PostMapping
-    public CreateUserResponse create(@RequestBody CreateUserRequest request){
+    public CreateUserResponse create(@Valid @RequestBody CreateUserRequest request){
         return service.create(request);
     }
 
     @PutMapping("/{id}")
-    public UserResponse update(@RequestBody CreateUserRequest request, @PathVariable Long id){
+    public UserResponse update(@Valid @RequestBody CreateUserRequest request, @PathVariable Long id){
         return service.update(request, id);
     }
 
